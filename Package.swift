@@ -22,7 +22,8 @@ func findJavaHome() -> String {
     return home
   }
 
-  fatalError("Please set the JAVA_HOME environment variable to point to where Java is installed.")
+  //fatalError("Please set the JAVA_HOME environment variable to point to where Java is installed.")
+  return ""
 }
 let javaHome = findJavaHome()
 
@@ -95,9 +96,10 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/swiftlang/swift-syntax.git", branch: "main"),
+    .package(url: "https://github.com/swiftlang/swift-syntax", from: "600.0.0"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "1.5.0"),
     .package(url: "https://github.com/apple/swift-system", from: "1.0.0"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.0.1"),
   ],
   targets: [
     .macro(
@@ -105,6 +107,13 @@ let package = Package(
       dependencies: [
         .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
         .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+      ]
+    ),
+    .testTarget(
+      name: "JavaKitMacrosTests",
+      dependencies: [
+        "JavaKitMacros",
+        .product(name: "MacroTesting", package: "swift-macro-testing"),
       ]
     ),
     .target(

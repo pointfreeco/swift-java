@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "FF001F4F-D445-4CA5-868C-3DE571EDE7F6",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "JavaKitMacrosTests",
+        "name" : "JavaKitMacrosTests"
+      }
+    }
+  ],
+  "version" : 1
+}
